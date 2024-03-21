@@ -1,4 +1,5 @@
 env-refresh/
+media/
 employees/__pycache__/
 website/__pycache__/
 website/app_secrets.py

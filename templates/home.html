@@ -12,8 +12,37 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Welcome to my Django Knowledge Refresh Website</h1>
+    <h1>Django Knowledge Refresh Website</h1>
+    <hr />
 
+    <div class="container">
+
+        <table class="table table-dark table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                {% for employee in employees %}
+                    <tr>
+                        <td><img src="{{ employee.photo.url }}" alt="{{ employee.name }}" class="img-fluid" width="50"></td>
+                        <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+                        <td>{{ employee.email }}</td>
+                        <td>{{ employee.position }}</td>
+                    </tr>
+                {% endfor %}
+    
+            </tbody>
+        </table>
+
+    </div>
+
+    <hr />
     <span><b><i>Powered by: </i></b><img src="{% static 'images/django.png' %}" alt="Django Logo" class="img-fluid" width="80"></span>
 </body>
 </html>
