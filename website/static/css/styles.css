@@ -2,3 +2,7 @@ body {
     background-color: #101720;/* 171717 */
     color: #F8F8FF;
 }
+
+.card .employee-profile {
+    background-color: #011222;
+}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Employee Details</h2>
+    <hr />
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <div class="card mx-auto bg-dark" style="width: 18rem;">
+                <img src="{{ employee.photo.url }}" alt="{{ employee.name }}" class="card-img-top">
+                <div class="card-body">
+                    <div class="text-white">
+                        <h4>{{ employee.first_name }} {{ employee.last_name }}</h4>
+                        <h5>Emp. Id: {{ employee.emp_id }}</h5>
+                    </div>
+                    <br>
+                    <a href="{% url 'employee_edit' employee.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'employee_list' %}" class="btn btn-danger">Back to List</a>
+                </div>
+            </div>                    
+        </div>
+        <div class="col-md-9">
+            
+            <p><strong>Email:</strong> {{ employee.email }}</p>
+            <p><strong>Position:</strong> {{ employee.position }}</p>
+            <p><strong>Phone:</strong> {{ employee.phone }}</p>
+            <p><strong>Start Date:</strong> {{ employee.created_at }}</p>
+            <p><strong>Last Update:</strong> {{ employee.updated_at }}</p>
+        </div>
+    </div>
+{% endblock %}
+

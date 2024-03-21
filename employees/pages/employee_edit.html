@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>[Edit] Employee Details</h2>
+    <hr />
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <form method="POST" action="{% url 'employee_edit' employee.id %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="hidden" name="id" value="{{ employee.id }}" />
+                <div class="row">
+                    
+                    <div class="col-3">
+                        <div class="mb-3">
+                            <div class="card mx-auto bg-dark text-white" style="width: 18rem;">
+                                <img src="{{ employee.photo.url }}" alt="{{ employee.name }}" class="card-img-top">
+                                <div class="card-body">
+                                    <label for="photo" class="form-label">Change Photo</label>
+                                    <input type="file" class="form-control bg-dark-subtle" id="photo" name="photo" value="{{ employee.photo }}">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="mb-3">
+                            <label for="emp_id" class="form-label">Employee Id</label>
+                            <input type="number" class="form-control bg-dark-subtle" id="emp_id" name="emp_id" value="{{ employee.emp_id }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label">First Name</label>
+                            <input type="text" class="form-control bg-dark-subtle" id="first_name" name="first_name" value="{{ employee.first_name }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="last_name" class="form-label">Last Name</label>
+                            <input type="text" class="form-control bg-dark-subtle" id="last_name" name="last_name" value="{{ employee.last_name }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="position" class="form-label">Position</label>
+                            <input type="text" class="form-control bg-dark-subtle" id="position" name="position" value="{{ employee.position }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control bg-dark-subtle" id="email" name="email" value="{{ employee.email }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="phone" class="form-control bg-dark-subtle" id="phone" name="phone" value="{{ employee.phone }}">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success">Save</button>
+                <a href="{% url 'employee_details' employee.id %}" class="btn btn-primary">Back to Details</a>
+                <a href="{% url 'employee_list' %}" class="btn btn-danger">Back to List</a>
+            </form>
+        </div>
+        
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Employees List</h2>
+    <hr />
+    <table class="table table-dark table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Phone</th>
+                <th>Start Date</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+            {% for employee in employees %}
+                <tr>
+                    <td>
+                        <a class="nav-link" href="{{ employee.id }}">
+                            {{ employee.emp_id }}
+                        </a>
+                        
+                        <!-- <img src="{{ employee.photo.url }}" alt="{{ employee.name }}" class="img-fluid" width="50"> -->
+                    </td>
+                    <td>
+                        {{ employee.first_name }} {{ employee.last_name }}
+                    </td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.position }}</td>
+                    <td>{{ employee.phone }}</td>
+                    <td>{{ employee.created_at }}</td>
+                </tr>
+            {% endfor %}
+    
+        </tbody>
+    </table>
+    <a href="{% url 'employee_add' %}" class="btn btn-primary">Add Employee</a>
+{% endblock %}
+
